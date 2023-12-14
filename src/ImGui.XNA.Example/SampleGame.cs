@@ -34,6 +34,31 @@ public class SampleGame : Game
         var io = ImGui.GetIO();
         io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
         _SetStyle();
+        
+        // Magic so ctrl+c and ctrl+v work in mac and linux!
+        if((OperatingSystem.IsMacOS() || OperatingSystem.IsLinux()))
+        {
+            if(!OperatingSystemHelpers.ClipboardDependencyExists())
+            {
+                var missing_dependency = OperatingSystem.IsMacOS()
+                    ? OperatingSystemHelpers.AppKit
+                    : OperatingSystemHelpers.SDL;
+                Console.WriteLine(
+                    $"Clipboard support is disabled. Could not load necessary dependency: '{missing_dependency}'."
+                );
+                return;
+            }
+
+            if(OperatingSystemHelpers.GetFnPtr is { } getFnPtr)
+            {
+                io.GetClipboardTextFn = getFnPtr;
+            }
+
+            if(OperatingSystemHelpers.SetFnPtr is { } setFnPtr)
+            {
+                io.SetClipboardTextFn = setFnPtr;
+            }
+        }
     }
 
     protected override void Draw(GameTime gameTime)

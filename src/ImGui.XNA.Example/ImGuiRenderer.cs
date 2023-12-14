@@ -244,12 +244,12 @@ public class ImGuiRenderer
 
         imguikey = key switch
         {
-            Keys.Back => ImGuiKey.Backspace, Keys.Tab => ImGuiKey.Tab, Keys.Enter => ImGuiKey.Enter,
-            Keys.CapsLock => ImGuiKey.CapsLock, Keys.Escape => ImGuiKey.Escape, Keys.Space => ImGuiKey.Space,
-            Keys.PageUp => ImGuiKey.PageUp, Keys.PageDown => ImGuiKey.PageDown, Keys.End => ImGuiKey.End,
-            Keys.Home => ImGuiKey.Home, Keys.Left => ImGuiKey.LeftArrow, Keys.Right => ImGuiKey.RightArrow,
-            Keys.Up => ImGuiKey.UpArrow, Keys.Down => ImGuiKey.DownArrow, Keys.PrintScreen => ImGuiKey.PrintScreen,
-            Keys.Insert => ImGuiKey.Insert, Keys.Delete => ImGuiKey.Delete,
+            Keys.LeftWindows => ImGuiKey.ModSuper, Keys.Back => ImGuiKey.Backspace, Keys.Tab => ImGuiKey.Tab,
+            Keys.Enter => ImGuiKey.Enter, Keys.CapsLock => ImGuiKey.CapsLock, Keys.Escape => ImGuiKey.Escape,
+            Keys.Space => ImGuiKey.Space, Keys.PageUp => ImGuiKey.PageUp, Keys.PageDown => ImGuiKey.PageDown,
+            Keys.End => ImGuiKey.End, Keys.Home => ImGuiKey.Home, Keys.Left => ImGuiKey.LeftArrow,
+            Keys.Right => ImGuiKey.RightArrow, Keys.Up => ImGuiKey.UpArrow, Keys.Down => ImGuiKey.DownArrow,
+            Keys.PrintScreen => ImGuiKey.PrintScreen, Keys.Insert => ImGuiKey.Insert, Keys.Delete => ImGuiKey.Delete,
             >= Keys.D0 and<= Keys.D9 => ImGuiKey._0 + (key - Keys.D0),
             >= Keys.A and<= Keys.Z => ImGuiKey.A + (key - Keys.A),
             >= Keys.NumPad0 and<= Keys.NumPad9 => ImGuiKey.Keypad0 + (key - Keys.NumPad0),
